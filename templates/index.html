@@ -12,9 +12,9 @@
     </div>
     {% block content %}
     <form method="POST">
-        <input type="text" name="name" placeholder="Enter the food name" value="{{ request.form['name'] }}">
-        <button type="submit">Search!</button>
-        <button type="reset">Clear</button>
+        <input type="text" name="title" placeholder="Enter the food name" value="{{name}}">
+        <button type="submit" name="btn" value="search">Search!</button>
+        <button type="submit" name="btn" value="clear">Clear</button>
     </form>
     <div>
     {% for result in results %}

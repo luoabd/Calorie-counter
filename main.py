@@ -20,13 +20,19 @@ def get_info(name):
 def index():
     results = []
     if request.method == 'POST':
-        name = request.form['name']
-        if not name:
-            flash('Name is required!')
-        else:
-            results = get_info(name)
-            if results == []: flash('No matches were found!')
-    return render_template('index.html', results = results)
+        name = request.form['title']
+        btn = request.form['btn']
+        if btn == 'search':
+            if not name:
+                flash('Name is required!')
+            else:
+                results = get_info(name)
+                if results == []: flash('No matches were found!')
+        if btn == 'clear':
+            name = ''
+            results = []
+        return render_template('index.html', results = results, name=name)
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()
