@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, url_for, flash, redirect
 import json
 app = Flask(__name__)
-
+app.config['SECRET_KEY'] = 'asasas'
 jsonFilePath = "data\Food_Table.json"
 
 def get_info(name):
@@ -25,6 +25,7 @@ def index():
             flash('Name is required!')
         else:
             results = get_info(name)
+            if results == []: flash('No matches were found!')
     return render_template('index.html', results = results)
 
 if __name__ == '__main__':
