@@ -5,11 +5,23 @@
     <title>Calorie counter</title>
 </head>
 <body>
-   <form>
-       <input type="text" placeholder="Enter the food name" value="{{ request.form['name'] }}">
-       <button type="submit">Search!</button>
-       <button type="reset">Clear</button>
-   </form>
-   <p>Here there will be a text box for showing results</p>
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% block content %}
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter the food name" value="{{ request.form['name'] }}">
+        <button type="submit">Search!</button>
+        <button type="reset">Clear</button>
+    </form>
+    <div>
+    {% for result in results %}
+        <h2>{{ result }}</h2>
+    {% endfor %}
+    </div>
+{% endblock %}
+
 </body>
 </html>
