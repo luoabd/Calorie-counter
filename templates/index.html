@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calorie counter</title>
+</head>
+<body>
+   <form>
+       <input type="text" placeholder="Enter the food name" value="{{ request.form['name'] }}">
+       <button type="submit">Search!</button>
+       <button type="reset">Clear</button>
+   </form>
+   <p>Here there will be a text box for showing results</p>
+</body>
+</html>
